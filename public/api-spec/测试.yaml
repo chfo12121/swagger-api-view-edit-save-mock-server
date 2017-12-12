@@ -1,0 +1,68 @@
+swagger: "2.0"
+info:
+  description: "这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，这是描述，可以写链接[http://www.baidu.com](http://www.baidu.com) ，还可以用`特殊样式`。"
+  version: "1.0.0"
+  title: "标题xxxAPI"
+paths:
+  /drifting_bottle/messages.json:
+    get:
+      tags:
+      - "分组1"
+      summary: "收到的抓一抓信息"
+      description: "接口描述接口描述接口描述接口描述接口描述"
+      parameters:
+      - name: "max_msg_id"
+        in: "query"
+        description: "最大消息id,向下翻页用到"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+          enum:
+          - "available"
+          - "pending"
+          - "sold"
+          default: "available"
+        collectionFormat: "multi"
+      - name: "min_msg_id"
+        in: "query"
+        description: "最小消息id,向上翻页用到"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+          enum:
+          - "available"
+          - "pending"
+          - "sold"
+          default: "available"
+        collectionFormat: "multi"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "成功"
+          schema:
+            $ref: "#/definitions/test"
+definitions:
+  test:
+    type: "array"
+    items:
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        name:
+          type: "string"
+          example: "doggie"
+        photoUrls:
+          type: "array"
+          items:
+            type: "string"
+        status:
+          type: "string"
+          description: "字段描述描述描述描述描述"
+          enum:
+          - "available"
+          - "pending"
+          - "sold"
